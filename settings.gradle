@@ -1,1 +1,5 @@
 rootProject.name = 'reencor'
+include 'parent:p-eureka'
+include 'parent:p-config'
+include 'services:svc-display'
+include 'webs:web-display'

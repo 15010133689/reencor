@@ -1,3 +1,31 @@
+group = 'com.reencor'
+allprojects {
+	version = rootProject.version
+
+	repositories {
+		mavenCentral()
+	}
+}
+def svcModules() {
+	subprojects.findAll {
+		it.name.contains('svc-')
+	}
+}
+def webModules() {
+	subprojects.findAll {
+		it.name.contains('web-')
+	}
+}
+def parentModules() {
+	subprojects.findAll {
+		it.name.contains('p-')
+	}
+}
+def allModules() {
+	subprojects.findAll {
+		it.name.contains('svc-') || it.name.contains('web-') || it.name.contains('p-')
+	}
+}
 buildscript {
 	ext {
 		springBootVersion = '2.0.1.RELEASE'
@@ -10,21 +38,122 @@ buildscript {
 	}
 }
 
-apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'org.springframework.boot'
-apply plugin: 'io.spring.dependency-management'
+ext.axon_version = '3.2'
+ext.jgroup_version = '3.6.10.Final'
+ext.mysql_connector_version = '5.7.20'
+ext.druid_version = '1.0.28'
+ext.hibernate_version = '5.0.12.Final'
+ext.springBootVersion = '2.0.1.RELEASE'
 
-group = 'com.reencor'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 1.8
 
-repositories {
-	mavenCentral()
+configure(allModules()) {
+	buildscript {
+		repositories {
+			mavenCentral()
+		}
+		dependencies {
+			classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		}
+	}
+	apply plugin: 'java'
+	apply plugin: 'idea'
+	apply plugin: 'org.springframework.boot'
+	apply plugin: 'io.spring.dependency-management'
+
+	group = 'com.recommend'
+	sourceCompatibility = 1.8
+
+	repositories {
+		maven { url "https://repo.spring.io/milestone" }
+		mavenCentral()
+	}
+
+	dependencies {
+
+	}
+	dependencyManagement {
+		imports {
+			mavenBom "org.springframework.cloud:spring-cloud-dependencies:Finchley.M9"
+		}
+	}
 }
 
+configure(svcModules()) {
+	buildscript {
+		repositories {
+			mavenCentral()
+		}
+		dependencies {
+			classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		}
+	}
+	apply plugin: 'java'
+	apply plugin: 'idea'
+	apply plugin: 'org.springframework.boot'
+	apply plugin: 'io.spring.dependency-management'
 
-dependencies {
-	compile('org.springframework.boot:spring-boot-starter')
-	testCompile('org.springframework.boot:spring-boot-starter-test')
+	group = 'com.recommend'
+	sourceCompatibility = 1.8
+	targetCompatibility = 1.8
+
+	repositories {
+		mavenCentral()
+	}
+
+
+	dependencies {
+
+	}
+
+}
+configure(webModules()) {
+	buildscript {
+		repositories {
+			mavenCentral()
+		}
+		dependencies {
+			classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		}
+	}
+	apply plugin: 'java'
+	apply plugin: 'idea'
+	apply plugin: 'org.springframework.boot'
+	apply plugin: 'io.spring.dependency-management'
+
+	group = 'com.recommend'
+	sourceCompatibility = 1.8
+
+	repositories {
+		mavenCentral()
+	}
+
+	dependencies {
+
+	}
+}
+configure(parentModules()) {
+	buildscript {
+		repositories {
+			mavenCentral()
+		}
+		dependencies {
+			classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		}
+	}
+	apply plugin: 'java'
+	apply plugin: 'idea'
+	apply plugin: 'org.springframework.boot'
+	apply plugin: 'io.spring.dependency-management'
+
+	group = 'com.recommend'
+	sourceCompatibility = 1.8
+
+	repositories {
+		maven { url "https://repo.spring.io/milestone" }
+		mavenCentral()
+	}
+
+	dependencies {
+
+	}
 }
