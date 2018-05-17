@@ -185,7 +185,7 @@ configure(svcAndwebModules()) {
 	dependencies {
 		compile project(':parent:p-base')
 		compile('org.springframework.boot:spring-boot-starter-web')
-		//lombok
+		compile('org.springframework.boot:spring-boot-starter-amqp')
 
 	}
 }
