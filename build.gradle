@@ -47,7 +47,6 @@ ext.mysql_connector_version = '5.7.20'
 ext.hibernate_version = '5.0.12.Final'
 ext.springBootVersion = '2.0.1.RELEASE'
 
-
 configure(allModules()) {
 	buildscript {
 		repositories {
@@ -108,7 +107,8 @@ configure(svcModules()) {
 
 
 	dependencies {
-
+		compile('org.springframework.boot:spring-boot-starter-data-jpa')
+		compile('mysql:mysql-connector-java')
 	}
 
 }
@@ -133,7 +133,8 @@ configure(webModules()) {
 	}
 
 	dependencies {
-
+		compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+		compile('org.springframework.cloud:spring-cloud-starter-openfeign')
 	}
 }
 configure(parentModules()) {

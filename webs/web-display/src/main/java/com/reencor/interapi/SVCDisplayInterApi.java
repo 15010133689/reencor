@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @FeignClient("svc-display")
 public interface SVCDisplayInterApi {
-    @RequestMapping(value = "/test",method = RequestMethod.GET)
-    String test(@RequestParam(value = "user")String  user);
+    @RequestMapping(value = "/test",method = RequestMethod.POST)
+    User test(User  user);
 }

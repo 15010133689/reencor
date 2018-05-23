@@ -2,6 +2,8 @@ package com.reencor.service;
 
 import com.reencor.display.entity.User;
 
+import java.util.Optional;
+
 public interface DisplayService {
-    public void test(User name);
+    public User test(User name);
 }
