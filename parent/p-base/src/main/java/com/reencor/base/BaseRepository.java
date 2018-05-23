@@ -1,7 +1,7 @@
 package com.reencor.base;
 
 /**
- * Created by winsion-all on 2017/6/10.
+ * Created by zqw on 2017/6/10.
  */
 
 import org.springframework.data.jpa.repository.JpaRepository;

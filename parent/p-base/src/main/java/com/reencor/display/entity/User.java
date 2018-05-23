@@ -10,6 +10,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Date;
 
 
 @ToString
@@ -25,8 +26,10 @@ public class User extends BaseEntity {
     @Id
     @Column(name = "userid")
     private String userId;
-    @Column(name = "username")
-    private String userName;
-    @Column(name = "age")
-    private Integer age;
+    @Column(name = "email")
+    private String email;
+    @Column(name = "isvalidate")
+    private Integer isvalidate;
+    @Column(name = "createtime")
+    private Date createtime;
 }

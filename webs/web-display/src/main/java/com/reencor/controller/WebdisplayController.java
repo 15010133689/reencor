@@ -21,15 +21,7 @@ public class WebdisplayController {
     @Autowired
     Gson gson;
 
-    @RequestMapping("/test")
-    public String test(){
-        try {
-            System.out.println(svcDisplayInterApi.test(new User("小明","1501000000",11)).getAge());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return "/index";
-    }
+
     @Autowired
     private RabbitTemplate rabbitTemplate;
 

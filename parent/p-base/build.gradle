@@ -2,5 +2,6 @@ dependencies {
     compile ("org.projectlombok:lombok:1.16.10")
     compile('org.springframework.boot:spring-boot-starter-amqp')
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile('javax.mail:mail:1.4.4')
 }
 
